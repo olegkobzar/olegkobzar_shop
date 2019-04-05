@@ -1,7 +1,10 @@
-const builder = require('./builder');
+import builder from './builder';
+import './header.css';
 
-module.exports = () => {
+const header = () => {
   const content = '<a href="#">Logo</a>';
 
   return builder('header', content, 'header');
 };
+
+export { header };

@@ -1,10 +1,9 @@
 const $ = require('jquery');
+import './app.scss';
 
-const header = require('./scripts/header')();
-const main = require('./scripts/main')();
-const footer = require('./scripts/footer')();
+import { header } from './scripts/header';
+import { main } from './scripts/main';
+import { footer } from './scripts/footer';
 
-$('body').append(header, main,  footer);
+$('body').append(header(), main(), footer());
 
-// document.body.appendChild(header);
-// document.body.appendChild(footer);
