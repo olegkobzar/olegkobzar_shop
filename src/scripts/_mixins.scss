@@ -1,0 +1,61 @@
+$radiusDefault: 10px !default;
+
+@mixin round($leftTop: $radiusDefault, $rightTop: $radiusDefault, $rightBottom: $radiusDefault, $leftBottom: $radiusDefault) {
+  
+  @if $leftTop == '' {
+    border-top-left-radius: 0;
+  } @else {
+    border-top-left-radius: $leftTop;
+  }
+
+  @if $rightTop == '' {
+    border-top-right-radius: 0;
+  } @else {
+    border-top-right-radius: $rightTop;
+  }
+
+  @if $rightBottom == '' {
+    border-bottom-right-radius: 0;
+  } @else {
+    border-bottom-right-radius: $rightBottom;
+  }
+
+  @if $leftBottom == '' {
+    border-bottom-left-radius: 0;
+  } @else {
+    border-bottom-left-radius: $leftBottom;
+  }
+}
+
+@mixin triangle($direction, $w1, $w2, $borderColor) {
+  position: absolute;
+  content: '';
+  width: 0;
+  height: 0;
+  border-style: solid;
+
+  @if $direction == '' {
+    border-width: 0 $w2 $w1 $w2;
+    border-color: transparent transparent $borderColor transparent;
+  }
+
+  @if $direction == up {
+    border-width: 0 $w2 $w1 $w2;
+    border-color: transparent transparent $borderColor transparent;
+  }
+
+  @if $direction == left {
+    border-width: $w2 $w1 $w2 0;
+    border-color: transparent $borderColor transparent transparent;
+  }
+
+  @if $direction == down {
+    border-width: $w2 $w1 0 $w2;
+    border-color: $borderColor transparent transparent transparent;
+  }
+
+  @if $direction == right {
+    border-width: $w2 0 $w2 $w1;
+    border-color: transparent transparent transparent $borderColor;
+  }
+}
