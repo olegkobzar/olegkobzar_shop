@@ -1,4 +1,5 @@
 import builder from './builder';
+require('./main.scss');
 
 const main = () => {
   const currentTime = new Date().toLocaleString();

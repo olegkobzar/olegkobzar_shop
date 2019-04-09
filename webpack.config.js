@@ -5,6 +5,8 @@ const CssPlugin = require('mini-css-extract-plugin');
 const package = require('./package.json');
 const isProduction = process.env.NODE_ENV === 'production';
 
+const dateNow = Date.now();
+
 module.exports = {
   entry: './index.js',
   context: path.resolve(__dirname, 'src'),
@@ -49,7 +51,8 @@ module.exports = {
       version: package.version
     }),
 
-    new CssPlugin({filename: 'main.css'})
+    // new CssPlugin({filename: '[name]-[contenthash].css'})
+    new CssPlugin({filename: `[name]-${dateNow}.css`})
   ],
 
   optimization: {
