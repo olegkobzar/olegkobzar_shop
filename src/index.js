@@ -7,3 +7,7 @@ import { footer } from './scripts/footer';
 
 $('body').append(header(), main(), footer());
 
+// import('./scripts/footer')
+//   .then(module => {
+//     $('body').append(module.footer());
+//   })

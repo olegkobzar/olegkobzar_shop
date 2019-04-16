@@ -2,6 +2,7 @@
 @import './mixins';
 
 .main {
+  background-color: orange;
 
   h1 {
     background-color: getDarken(#666);
