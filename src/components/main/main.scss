@@ -1,0 +1,11 @@
+@import '../../variables';
+
+.main {
+  width: calc(100% - 250px);
+  padding: 30px 0 30px 40px;
+  overflow: auto;
+
+  p {
+    margin: 0 0 30px 0;
+  }
+}
