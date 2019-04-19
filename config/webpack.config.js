@@ -50,7 +50,7 @@ module.exports = {
                 use: [
                     isStylesExternal ? CssPlugin.loader : 'style-loader',
                     'css-loader',
-                    // 'sass-loader'
+                    'sass-loader'
                 ]
             }
 

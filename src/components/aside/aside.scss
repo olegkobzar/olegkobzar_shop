@@ -1,0 +1,33 @@
+@import '../../variables';
+
+.aside {
+  width: 250px;
+  padding: 30px 0 50px;
+  background-color: #FFFF00;
+
+  ul {
+
+    a {
+      color: #000;
+      display: block;
+      position: relative;
+      padding: 10px 15px;
+
+      &:before {
+        position: absolute;
+        content: '';
+        width: 8px;
+        height: 8px;
+        border-bottom: 1px solid #000;
+        border-right: 1px solid #000;
+        transform: rotate(-45deg);
+        right: 15px;
+        top: 15px;
+      }
+
+      &:hover {
+        background-color: #fff;
+      }
+    }
+  }
+}

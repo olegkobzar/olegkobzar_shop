@@ -1,14 +1,24 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import { Navigation } from './navigation/Navigation'
+import './index.scss';
 
-const Time = () => <time>{String(new Date().toLocaleString())}</time>
-const header = (
-  <header>
-    <h1>Hello <Time></Time></h1>
-    <Navigation></Navigation>
-  </header>
+import { Header } from './components/header/Header';
+import { Footer } from './components/footer/Footer';
+import { Main } from './components/main/Main';
+import { Aside } from './components/aside/Aside';
+
+const body = (
+  <div className="wrapper">
+    <Header />
+    <div className="container">
+      <div className="wrap">
+        <Aside />
+        <Main />
+      </div>
+    </div>
+    <Footer />
+  </div>
 );
 
-ReactDOM.render(header, document.getElementById('app'));
+ReactDOM.render(body, document.getElementById('app'));

@@ -1,0 +1,14 @@
+@import '../../variables';
+
+.footer {
+  background-color: $grey;
+
+  &__copyright {
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: $purple;
+    text-align: center;
+  }
+}
