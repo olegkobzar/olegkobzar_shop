@@ -10,14 +10,14 @@ import { Aside } from './components/aside/Aside';
 
 const body = (
   <div className="wrapper">
-    <Header></Header>
+    <Header />
     <div className="container">
       <div className="wrap">
-        <Aside></Aside>
-        <Main></Main>
+        <Aside />
+        <Main />
       </div>
     </div>
-    <Footer></Footer>
+    <Footer />
   </div>
 );
 
