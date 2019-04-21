@@ -1,9 +1,12 @@
-$purple: #800080;
-$grey: #708090;
-$body-bg: #E6E6FA;
+:root {
 
-$main-fz: 16px;
-$second-fz: 20px;
+  --purple: #800080;
+  --grey: #708090;
+  --body-bg: #E6E6FA;
 
-$container-width: 1120px;
-$container-padding: 20px;
+  --main-fz: 16px;
+  --second-fz: 20px;
+
+  --container-width: 1120px;
+  --container-padding: 20px;
+}

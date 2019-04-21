@@ -1,14 +1,12 @@
-@import '../../variables';
-
 .footer {
-  background-color: $grey;
+  background-color: var(--grey);
 
   &__copyright {
     height: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
-    color: $purple;
+    color: var(--purple);
     text-align: center;
   }
 }

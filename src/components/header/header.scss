@@ -1,7 +1,5 @@
-@import '../../variables';
-
 .header {
-  background-color: $purple;
+  background-color: var(--purple);
 
   &__wrap {
     display: flex;

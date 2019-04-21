@@ -1,5 +1,3 @@
-@import '../../variables';
-
 .nav {
   
   ul {
@@ -15,7 +13,7 @@
       color: #fff;
 
       &:hover {
-        color: $grey;
+        color: var(--grey);
       }
     }
   }

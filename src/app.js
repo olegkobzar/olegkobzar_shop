@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import './index.scss';
+import './app.scss';
 
 import { Header } from './components/header';
 import { Footer } from './components/footer';

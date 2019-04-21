@@ -1,9 +1,9 @@
-@import './variables';
+@import 'variables.scss';
 
 body {
-  background-color: $body-bg;
+  background-color: var(--body-bg);
   margin: 0;
-  font-size: $main-fz;
+  font-size: var(--main-fz);
   font-family: 'Roboto', sans-serif;
   min-height: 100vh;
 }
@@ -32,11 +32,11 @@ ul {
 
 a {
   text-decoration: none;
-  color: $grey;
+  color: var(--grey);
 }
 
 .container {
-  max-width: $container-width;
-  padding: 0 $container-padding;
+  max-width: var(--container-width);
+  padding: 0 var(--container-padding);
   margin: 0 auto;
 }
