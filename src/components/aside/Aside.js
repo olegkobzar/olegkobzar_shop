@@ -6,22 +6,22 @@ export const Aside = () => (
   <aside className="aside">
     <ul>
       <li>
-        <a href="#">Category-1</a>
+        <a href="/one">Category-1</a>
       </li>
       <li>
-        <a href="#">Category-2</a>
+        <a href="/one">Category-2</a>
       </li>
       <li>
-        <a href="#">Category-3</a>
+        <a href="/one">Category-3</a>
       </li>
       <li>
-        <a href="#">Category-4</a>
+        <a href="/one">Category-4</a>
       </li>
       <li>
-        <a href="#">Category-5</a>
+        <a href="/one">Category-5</a>
       </li>
       <li>
-        <a href="#">Category-6</a>
+        <a href="/one">Category-6</a>
       </li>
     </ul>
   </aside>

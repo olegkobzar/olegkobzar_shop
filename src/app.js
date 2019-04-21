@@ -3,12 +3,12 @@ import ReactDOM from 'react-dom';
 
 import './index.scss';
 
-import { Header } from './components/header/Header';
-import { Footer } from './components/footer/Footer';
-import { Main } from './components/main/Main';
-import { Aside } from './components/aside/Aside';
+import { Header } from './components/header';
+import { Footer } from './components/footer';
+import { Main } from './components/main';
+import { Aside } from './components/aside';
 
-const body = (
+const App = () => (
   <div className="wrapper">
     <Header />
     <div className="container">
@@ -21,4 +21,8 @@ const body = (
   </div>
 );
 
-ReactDOM.render(body, document.getElementById('app'));
+ReactDOM.render(<App />, document.getElementById('app'));
+
+if (module.hot) {
+  module.hot.accept();
+}

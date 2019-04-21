@@ -6,16 +6,16 @@ export const Navigation = () => (
   <nav className="nav">
     <ul>
       <li>
-        <a href="#">One</a>
+        <a href="/one">One</a>
       </li>
       <li>
-        <a href="#">Two</a>
+        <a href="/one">Two</a>
       </li>
       <li>
-        <a href="#">Three</a>
+        <a href="/one">Three</a>
       </li>
       <li>
-        <a href="#">Four</a>
+        <a href="/one">Four</a>
       </li>
     </ul>
   </nav>
