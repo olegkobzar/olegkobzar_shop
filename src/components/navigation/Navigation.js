@@ -1,22 +1,15 @@
-import React from 'react';
-
 import './navigation.scss';
 
-export const Navigation = () => (
-  <nav className="nav">
-    <ul>
-      <li>
-        <a href="/one">One</a>
-      </li>
-      <li>
-        <a href="/one">Two</a>
-      </li>
-      <li>
-        <a href="/one">Three</a>
-      </li>
-      <li>
-        <a href="/one">Four</a>
-      </li>
-    </ul>
-  </nav>
-);
+export const Navigation = ({ list }) => {
+  const slash = '/';
+
+  return (
+    <nav className="nav">
+      <ul>
+        {
+          list.map((listItem, index) => <li key={index}><a href={slash + listItem.toLowerCase()}>{listItem}</a></li>)
+        }
+      </ul>
+    </nav>
+  );
+};
