@@ -7,43 +7,43 @@ const { assert, expect } = chai;
 chai.should();
 
 describe('getUsers()', () => {
-  let stub;
-  // let fakeConsole;
-  const testString = faker.lorem.word();
+  // let stub;
+  // // let fakeConsole;
+  // const testString = faker.lorem.word();
 
-  const createStub = () => {
-    stub = sinon.stub(window, 'fetch');
-    stub.returns(Promise.resolve({
-      json() { return Promise.resolve(testString); }
-    }));
-
-    return stub;
-  }
-
-  // beforeEach(() => {
+  // const createStub = () => {
   //   stub = sinon.stub(window, 'fetch');
   //   stub.returns(Promise.resolve({
   //     json() { return Promise.resolve(testString); }
   //   }));
 
-  //   fakeConsole = sinon.stub(console, 'log');
+  //   return stub;
+  // }
+
+  // // beforeEach(() => {
+  // //   stub = sinon.stub(window, 'fetch');
+  // //   stub.returns(Promise.resolve({
+  // //     json() { return Promise.resolve(testString); }
+  // //   }));
+
+  // //   fakeConsole = sinon.stub(console, 'log');
+  // // })
+
+  // afterEach(() => {
+  //   window.fetch.restore();
   // })
 
-  afterEach(() => {
-    window.fetch.restore();
-  })
+  // it('should call fetch()', () => {
+  //   getUsers();
 
-  it('should call fetch()', () => {
-    getUsers();
+  //   expect(stub.called).to.be.true;
+  // });
 
-    expect(stub.called).to.be.true;
-  });
+  // it('should call console.log with result it success', () => {
+  //   const fakeConsole = sinon.stub(console, 'log');
+  //   createStub();
+  //   getUsers();
 
-  it('should call console.log with result it success', () => {
-    const fakeConsole = sinon.stub(console, 'log');
-    createStub();
-    getUsers();
-
-    expect(fakeConsole.called).to.be.true;
-  });
+  //   expect(fakeConsole.called).to.be.true;
+  // });
 });
