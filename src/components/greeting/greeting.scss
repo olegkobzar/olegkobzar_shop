@@ -1,0 +1,14 @@
+.greeting {
+  font-size: 20px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--purple);
+  margin-bottom: 30px;
+
+  &__name {
+    color: var(--purple);
+    margin-left: 5px;
+  }
+}
