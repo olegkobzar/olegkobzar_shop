@@ -7,10 +7,10 @@ import { Numbers } from '../numbers';
 import { UsersList } from '../usersList';
 import { Counter } from '../counter';
 
-const list = [
-  { firstName: 'Oleg ', lastName: 'Kobzar ', age: 24 },
-  { firstName: 'Ivan ', lastName: 'Ivanov ', age: 99 }
-];
+// const list = [
+//   { firstName: 'Oleg ', lastName: 'Kobzar ', age: 24 },
+//   { firstName: 'Ivan ', lastName: 'Ivanov ', age: 99 }
+// ];
 
 export class Main extends Component {
   state = {
@@ -25,10 +25,12 @@ export class Main extends Component {
   getUsers() {
     fetch('https://jsonplaceholder.typicode.com/users')
       .then(data => data.json())
-      .then(users => this.setState({ users }))
+      .then(users => this.setState({ users }));
   }
 
   render() {
+    const { user } = this.props;
+    const { users } = this.state;
 
     return (
       <main className="main">
@@ -36,7 +38,7 @@ export class Main extends Component {
         <Numbers from="5" to="10" />
         <Numbers from="5" to="10" odd />
         <Numbers from="5" to="10" even />
-        <UsersList users={list} />
+        <UsersList users={users} />
         <Counter />
         <a href="/one" title="Шутка, продолжения нет))">To be continue...</a>
       </main>

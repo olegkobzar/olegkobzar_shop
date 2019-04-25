@@ -1,17 +1,14 @@
 import './usersList.scss';
 
-const User = ({ firstName, lastName, age }) => (
+const User = ({ name, email }) => (
   <li>
-    <span>{firstName}</span>
-    <span>{lastName}</span>
-    <span>{age}</span>
+    <span>{name}</span> -
+    <strong> {email}</strong>
   </li>
 );
 
 export const UsersList = ({ users }) => (
-  <ul>
-    {
-      users.map((user, i) => <User key={i} firstName={user.firstName} lastName={user.lastName} age={user.age} />)
-    }
-  </ul>
+  users && users.map(({ name, email, id }) => (
+    <User key={id} email={email} name={name} />
+  ))
 );
