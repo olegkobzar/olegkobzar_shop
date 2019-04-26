@@ -7,11 +7,6 @@ import { Numbers } from '../numbers';
 import { UsersList } from '../usersList';
 import { Counter } from '../counter';
 
-// const list = [
-//   { firstName: 'Oleg ', lastName: 'Kobzar ', age: 24 },
-//   { firstName: 'Ivan ', lastName: 'Ivanov ', age: 99 }
-// ];
-
 export class Main extends Component {
   state = {
     users: []
@@ -29,7 +24,7 @@ export class Main extends Component {
   }
 
   render() {
-    const { user } = this.props;
+    // const { user } = this.props;
     const { users } = this.state;
 
     return (

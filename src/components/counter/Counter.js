@@ -8,7 +8,7 @@ export class Counter extends Component {
   clickHendler = () => {
     this.setState({
       counter: this.state.counter + 1
-    })
+    });
   }
 
   render() {
@@ -16,9 +16,9 @@ export class Counter extends Component {
 
     return (
       <>
-        <button onClick={this.clickHendler} className="counter">Click</button>
+        <button type="button" onClick={this.clickHendler} className="counter">Click</button>
         <p>{counter}</p>
       </>
-    )
+    );
   }
 }
