@@ -6,8 +6,9 @@ export class Counter extends Component {
   }
 
   clickHendler = () => {
+    const { counter } = this.state;
     this.setState({
-      counter: this.state.counter + 1
+      counter: counter + 1
     });
   }
 
