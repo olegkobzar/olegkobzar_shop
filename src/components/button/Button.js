@@ -21,7 +21,8 @@ export class Button extends Component {
           type="button"
           className={active ? 'btn active' : 'btn'}
           onClick={this.toggleClass}
-        >{active ? 'Hide' : 'Show'}
+        >
+          {active ? 'Hide' : 'Show'}
         </button>
         {active && <ToggleText />}
       </>
