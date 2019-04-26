@@ -6,6 +6,8 @@ import { Greeting } from '../greeting';
 import { Numbers } from '../numbers';
 import { UsersList } from '../usersList';
 import { Counter } from '../counter';
+import { Button } from '../button';
+import { Info } from '../info';
 
 export class Main extends Component {
   state = {
@@ -35,7 +37,8 @@ export class Main extends Component {
         <Numbers from="5" to="10" even />
         <UsersList users={users} />
         <Counter />
-        <a href="/one" title="Шутка, продолжения нет))">To be continue...</a>
+        <Button />
+        <Info />
       </main>
     );
   }
