@@ -8,7 +8,11 @@ const User = ({ name, email }) => (
 );
 
 export const UsersList = ({ users }) => (
-  users && users.map(({ name, email, id }) => (
-    <User key={id} email={email} name={name} />
-  ))
+  <ul>
+    {
+      users && users.map(({ name, email, id }) => (
+        <User key={id} email={email} name={name} />
+      ))
+    }
+  </ul>
 );

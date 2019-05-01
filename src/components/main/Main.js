@@ -25,6 +25,10 @@ export class Main extends Component {
       .then(users => this.setState({ users }));
   }
 
+  // showUserInfo({ phone, name, website }) {
+  //   alert(`${phone}, ${name}, ${website}`);
+  // }
+
   render() {
     // const { user } = this.props;
     const { users } = this.state;
