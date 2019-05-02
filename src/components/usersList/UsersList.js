@@ -1,17 +1,31 @@
 import './usersList.scss';
 
-const User = ({ name, email }) => (
-  <li>
-    <span>{name}</span> -
-    <strong> {email}</strong>
-  </li>
-);
+const User = ({ data, onClick }) => {
+  const clickHandler = (event) => {
+    onClick(data);
+    event.preventDefault();
+  };
+  const { name, email } = data;
 
-export const UsersList = ({ users }) => (
-  <ul>
+  return (
+    <li>
+      <a href="#" onClick={clickHandler}>
+        <strong>{name} -</strong>
+        {email}
+      </a>
+    </li>
+  );
+};
+
+export const UsersList = ({ list, onClick }) => (
+  <ul className="users">
     {
-      users && users.map(({ name, email, id }) => (
-        <User key={id} email={email} name={name} />
+      list && list.map(({ id, ...rest }) => (
+        <User
+          key={id}
+          data={rest}
+          onClick={onClick}
+        />
       ))
     }
   </ul>

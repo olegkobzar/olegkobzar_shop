@@ -25,13 +25,13 @@ export class Main extends Component {
       .then(users => this.setState({ users }));
   }
 
-  // showUserInfo({ phone, name, website }) {
-  //   alert(`${phone}, ${name}, ${website}`);
-  // }
+  showUserInfo = ({ phone, name, website }) => {
+    this.setState({ selectedUser: phone });
+  }
 
   render() {
-    // const { user } = this.props;
-    const { users } = this.state;
+    const { user, element } = this.props;
+    const { users, selectedUser } = this.state;
 
     return (
       <main className="main">
@@ -39,7 +39,8 @@ export class Main extends Component {
         <Numbers from="5" to="10" />
         <Numbers from="5" to="10" odd />
         <Numbers from="5" to="10" even />
-        <UsersList users={users} />
+        <UsersList list={users} onClick={this.showUserInfo} />
+        <div>Info: {selectedUser}</div>
         <Counter />
         <Button />
         <Info />
