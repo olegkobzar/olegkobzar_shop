@@ -8,10 +8,13 @@ import { UsersList } from '../usersList';
 import { Counter } from '../counter';
 import { Button } from '../button';
 import { Info } from '../info';
+import { Clock } from '../clock';
 
 export class Main extends Component {
   state = {
-    users: []
+    users: [],
+    posts: [],
+    isPostsTitle: false
   }
 
   constructor() {
@@ -25,13 +28,15 @@ export class Main extends Component {
       .then(users => this.setState({ users }));
   }
 
-  showUserInfo = ({ phone, name, website }) => {
-    this.setState({ selectedUser: phone });
+  showPosts = (posts) => {
+    this.setState({
+      posts,
+      isPostsTitle: true
+    });
   }
 
   render() {
-    const { user, element } = this.props;
-    const { users, selectedUser } = this.state;
+    const { users, posts, isPostsTitle } = this.state;
 
     return (
       <main className="main">
@@ -39,11 +44,19 @@ export class Main extends Component {
         <Numbers from="5" to="10" />
         <Numbers from="5" to="10" odd />
         <Numbers from="5" to="10" even />
-        <UsersList list={users} onClick={this.showUserInfo} />
-        <div>Info: {selectedUser}</div>
+        <UsersList list={users} showPosts={this.showPosts} />
+        {isPostsTitle
+          && (
+            <div className="posts">
+              <h3>Posts:</h3>
+              <ul>{posts.map((post, index) => <li key={index}>{post.body}</li>)}</ul>
+            </div>
+          )
+        }
         <Counter />
         <Button />
         <Info />
+        <Clock />
       </main>
     );
   }
