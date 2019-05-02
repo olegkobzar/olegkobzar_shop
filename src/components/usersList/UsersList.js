@@ -1,12 +1,9 @@
 import './usersList.scss';
 
-const User = ({ data, showPosts }) => {
+const User = ({ data, onClick }) => {
   const clickHandler = (event) => {
     event.preventDefault();
-
-    fetch(`https://jsonplaceholder.typicode.com/posts?userId=${data.id}`)
-      .then(data => data.json())
-      .then(posts => showPosts(posts));
+    onClick(data.id);
   };
   const { name, email } = data;
 
@@ -20,14 +17,14 @@ const User = ({ data, showPosts }) => {
   );
 };
 
-export const UsersList = ({ list, showPosts }) => (
+export const UsersList = ({ list, onClick }) => (
   <ul className="users">
     {
       list && list.map(data => (
         <User
           key={data.id}
           data={data}
-          showPosts={showPosts}
+          onClick={onClick}
         />
       ))
     }

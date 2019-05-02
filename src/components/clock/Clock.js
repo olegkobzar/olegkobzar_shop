@@ -21,13 +21,15 @@ export class Clock extends Component {
   }
 
   changeClock() {
+    const date = new Date();
+
     this.setState({
-      year: new Date().getFullYear(),
-      month: new Date().getMonth() + 1,
-      day: new Date().getDate(),
-      hours: new Date().getHours(),
-      minutes: new Date().getMinutes(),
-      seconds: new Date().getSeconds()
+      year: date.getFullYear(),
+      month: date.getMonth() + 1,
+      day: date.getDate(),
+      hours: date.getHours(),
+      minutes: date.getMinutes(),
+      seconds: date.getSeconds()
     });
   }
 
