@@ -1,13 +1,9 @@
 import './editText.scss';
 
 export class EditText extends Component {
-  propsPl = {
-    placeholder: 'Click on me and edit'
-  }
-
   state = {
     hidden: false,
-    text: this.propsPl.placeholder
+    text: ''
   };
 
   handlerClick = () => {
@@ -16,13 +12,12 @@ export class EditText extends Component {
 
   handlerBlur = () => {
     this.setState({ hidden: false });
-
-    const { text } = this.state;
-
-    if (text === '') {
-      this.setState({ text: this.propsPl.placeholder });
-    }
+    this.callbackFunc('Some text');
   };
+
+  callbackFunc = (el) => {
+    console.log(el);
+  }
 
   handlerChange = ({ target }) => {
     this.setState({ text: target.value });
@@ -30,7 +25,7 @@ export class EditText extends Component {
 
   render() {
     const { hidden, text } = this.state;
-    console.log(this.propsPl.placeholder);
+    const { placeholder } = this.props;
 
     return (
       <div className="edit-text">
@@ -39,13 +34,14 @@ export class EditText extends Component {
             ? (
               <input
                 type="text"
-                value={text || this.props.placeholder}
+                value={text}
+                placeholder={placeholder}
                 onChange={this.handlerChange}
                 onBlur={this.handlerBlur}
                 autoFocus
               />
             )
-            : <span onClick={this.handlerClick}>{text}</span>
+            : <span onClick={this.handlerClick}>{text || placeholder}</span>
         }
       </div>
     );

@@ -62,7 +62,7 @@ export class Main extends Component {
 
     return (
       <main className="main">
-        <EditText />
+        <EditText placeholder="Click on me and edit" />
         <input
           type="text"
           placeholder="Filter"
