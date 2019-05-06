@@ -10,10 +10,9 @@ export class EditText extends Component {
     this.setState({ hidden: true });
   };
 
-  handlerBlur = () => {
+  handlerBlur = (e) => {
     this.setState({ hidden: false });
-
-    console.log(this.props.result);
+    this.props.result(e.target.value);
   };
 
   handlerChange = ({ target }) => {
@@ -22,7 +21,7 @@ export class EditText extends Component {
 
   render() {
     const { hidden, text } = this.state;
-    const { placeholder, result } = this.props;
+    const { placeholder } = this.props;
 
     return (
       <div className="edit-text">

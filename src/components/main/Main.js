@@ -59,10 +59,11 @@ export class Main extends Component {
     const {
       users, posts, todo, filterTodo
     } = this.state;
+    const fn = text => console.log(text);
 
     return (
       <main className="main">
-        <EditText placeholder="Click on me and edit" result={console.log(111)} />
+        <EditText placeholder="Click on me and edit" result={fn} />
         <input
           type="text"
           placeholder="Filter"
