@@ -55,15 +55,16 @@ export class Main extends Component {
     return item.title.toLowerCase().includes(filterTodo);
   }
 
+  fn = text => console.log(text);
+
   render() {
     const {
       users, posts, todo, filterTodo
     } = this.state;
-    const fn = text => console.log(text);
 
     return (
       <main className="main">
-        <EditText placeholder="Click on me and edit" result={fn} />
+        <EditText placeholder="Click on me and edit" result={this.fn} />
         <input
           type="text"
           placeholder="Filter"
