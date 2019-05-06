@@ -12,12 +12,9 @@ export class EditText extends Component {
 
   handlerBlur = () => {
     this.setState({ hidden: false });
-    this.callbackFunc('Some text');
-  };
 
-  callbackFunc = (el) => {
-    console.log(el);
-  }
+    console.log(this.props.result);
+  };
 
   handlerChange = ({ target }) => {
     this.setState({ text: target.value });
@@ -25,7 +22,7 @@ export class EditText extends Component {
 
   render() {
     const { hidden, text } = this.state;
-    const { placeholder } = this.props;
+    const { placeholder, result } = this.props;
 
     return (
       <div className="edit-text">
