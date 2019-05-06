@@ -1,9 +1,13 @@
 import './editText.scss';
 
 export class EditText extends Component {
+  propsPl = {
+    placeholder: 'Click on me and edit'
+  }
+
   state = {
     hidden: false,
-    text: 'Click on me and edit'
+    text: this.propsPl.placeholder
   };
 
   handlerClick = () => {
@@ -16,7 +20,7 @@ export class EditText extends Component {
     const { text } = this.state;
 
     if (text === '') {
-      this.setState({ text: 'Click on me and edit' });
+      this.setState({ text: this.propsPl.placeholder });
     }
   };
 
@@ -24,14 +28,9 @@ export class EditText extends Component {
     this.setState({ text: target.value });
   };
 
-  componentDidUpdate() {
-    const { hidden } = this.state;
-
-    if (hidden) this.nameInput.focus();
-  }
-
   render() {
     const { hidden, text } = this.state;
+    console.log(this.propsPl.placeholder);
 
     return (
       <div className="edit-text">
@@ -40,10 +39,10 @@ export class EditText extends Component {
             ? (
               <input
                 type="text"
-                value={text}
+                value={text || this.props.placeholder}
                 onChange={this.handlerChange}
                 onBlur={this.handlerBlur}
-                ref={input => this.nameInput = input}
+                autoFocus
               />
             )
             : <span onClick={this.handlerClick}>{text}</span>

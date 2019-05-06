@@ -22,12 +22,6 @@ export class Main extends Component {
     filterTodo: ''
   }
 
-  constructor() {
-    super();
-    this.getUsers();
-    this.todoList();
-  }
-
   getUsers() {
     fetch('https://jsonplaceholder.typicode.com/users')
       .then(data => data.json())
@@ -44,6 +38,11 @@ export class Main extends Component {
     fetch('https://jsonplaceholder.typicode.com/todos')
       .then(data => data.json())
       .then(todo => this.setState({ todo }));
+  }
+
+  componentDidMount() {
+    this.getUsers();
+    this.todoList();
   }
 
   setFilter = ({ target }) => {

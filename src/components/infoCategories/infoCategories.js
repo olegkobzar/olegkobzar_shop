@@ -8,18 +8,6 @@ export class InfoCategories extends Component {
     products: 50
   }
 
-  categories = () => {
-    const {
-      name, categories, published, products
-    } = this.state;
-    this.setState({
-      name,
-      categories,
-      published,
-      products
-    });
-  }
-
   render() {
     const {
       name, categories, published, products
