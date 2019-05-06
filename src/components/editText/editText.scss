@@ -1,0 +1,15 @@
+.edit-text {
+  margin-bottom: 30px;
+
+  span {
+    cursor: pointer;
+  }
+
+  input {
+    outline: none;
+    font-size: 16px;
+    display: block;
+    width: 100%;
+    padding: 5px 5px;
+  }
+}

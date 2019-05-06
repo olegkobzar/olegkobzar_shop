@@ -1,0 +1,23 @@
+.todo {
+
+  &__controlled {
+    display: inline-block;
+    margin-left: 30px;
+
+    span {
+      display: inline-block;
+      padding: 0 5px;
+      cursor: pointer;
+    }
+  }
+
+  li {
+    text-decoration: none;
+    color: #000;
+
+    &.done {
+      text-decoration: line-through;
+      opacity: .5;
+    }
+  }
+}

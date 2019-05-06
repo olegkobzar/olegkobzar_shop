@@ -10,17 +10,22 @@ import { Counter } from '../counter';
 import { Button } from '../button';
 import { Info } from '../info';
 import { Clock } from '../clock';
+import { EditText } from '../editText';
+import { Todo } from '../todo';
+import { InfoCategories } from '../infoCategories';
 
 export class Main extends Component {
   state = {
     users: [],
     posts: [],
-    filterUser: ''
+    todo: [],
+    filterTodo: ''
   }
 
   constructor() {
     super();
     this.getUsers();
+    this.todoList();
   }
 
   getUsers() {
@@ -35,30 +40,44 @@ export class Main extends Component {
       .then(posts => this.setState({ posts }));
   }
 
-  setFilter = ({ target }) => {
-    this.setState({ filterUser: target.value });
+  todoList = () => {
+    fetch('https://jsonplaceholder.typicode.com/todos')
+      .then(data => data.json())
+      .then(todo => this.setState({ todo }));
   }
 
-  filterUsers = (user) => {
-    const { filterUser } = this.state;
+  setFilter = ({ target }) => {
+    this.setState({ filterTodo: target.value });
+  }
 
-    if (filterUser.length > 1) return user.name.toLowerCase().includes(filterUser);
+  filterTodos = (item) => {
+    const { filterTodo } = this.state;
 
-    return true;
+    return item.title.toLowerCase().includes(filterTodo);
   }
 
   render() {
-    const { users, posts, filterUser } = this.state;
+    const {
+      users, posts, todo, filterTodo
+    } = this.state;
 
     return (
       <main className="main">
+        <EditText />
+        <input
+          type="text"
+          placeholder="Filter"
+          value={filterTodo}
+          onChange={this.setFilter}
+        />
+        <Todo list={todo.slice(0, 20).filter(this.filterTodos)} />
+        <InfoCategories />
         <Greeting name="Oleg" />
         <Form />
         <Numbers from="5" to="10" />
         <Numbers from="5" to="10" odd />
         <Numbers from="5" to="10" even />
-        <input type="text" value={filterUser} onChange={this.setFilter} />
-        <UsersList list={users.filter(this.filterUsers)} onClick={this.showUserInfo} />
+        <UsersList list={users} onClick={this.showUserInfo} />
         {posts.length !== 0
           && (
             <div className="posts">
