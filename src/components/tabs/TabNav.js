@@ -1,6 +1,6 @@
 import './tabs.scss';
 
-export const TabNav = ({ list, select }) => {
+export const TabNav = ({ list, select, selectedIndex }) => {
   const onClick = (e, index) => {
     select(index);
     e.preventDefault();
@@ -12,7 +12,9 @@ export const TabNav = ({ list, select }) => {
         {
           list.map((el, index) => (
             <li key={index}>
-              <a href="#" onClick={e => onClick(e, index)}>{el}</a>
+              <a href="#" onClick={e => onClick(e, index)} className={selectedIndex === index ? 'active' : ''}>
+                {el}
+              </a>
             </li>))
         }
       </ul>

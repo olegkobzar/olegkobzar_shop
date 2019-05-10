@@ -22,6 +22,7 @@ export class Tabs extends Component {
         <TabNav
           list={titles}
           select={this.changeTab}
+          selectedIndex={selectedIndex}
         />
 
         <div className="tab">

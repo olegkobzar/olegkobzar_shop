@@ -9,7 +9,13 @@
     a {
       display: block;
       padding: 10px 15px;
-      background: #eee;
+      background-color: #eee;
+      transition: all .3s;
+
+      &.active {
+        color: #fff;
+        background-color: #000;
+      }
     }
   }
 }
