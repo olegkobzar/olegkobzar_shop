@@ -4,20 +4,16 @@ import ReactDOM from 'react-dom';
 import './app.scss';
 
 import { Header } from './components/header';
-import { Footer } from './components/footer';
 import { Main } from './components/main';
-import { Aside } from './components/aside';
 
 const App = () => (
   <div className="wrapper">
     <Header />
     <div className="container">
       <div className="wrap">
-        <Aside />
         <Main />
       </div>
     </div>
-    <Footer />
   </div>
 );
 

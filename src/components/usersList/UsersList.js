@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 import './usersList.scss';
 
 const User = ({ data, onClick }) => {
@@ -20,7 +22,7 @@ const User = ({ data, onClick }) => {
 export const UsersList = ({ list, onClick }) => (
   <ul className="users">
     {
-      list && list.map(data => (
+      list.map(data => (
         <User
           key={data.id}
           data={data}
@@ -30,3 +32,12 @@ export const UsersList = ({ list, onClick }) => (
     }
   </ul>
 );
+
+UsersList.PropTypes = {
+  list: PropTypes.array.isRequired,
+  onClick: PropTypes.func
+};
+
+UsersList.defaultProps = {
+  onClick: _ => _
+};

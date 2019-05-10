@@ -2,17 +2,15 @@ import React from 'react';
 
 import './main.scss';
 
-import { Greeting } from '../greeting';
 import { Form } from '../form';
 import { Numbers } from '../numbers';
 import { UsersList } from '../usersList';
-import { Counter } from '../counter';
-import { Button } from '../button';
 import { Info } from '../info';
 import { Clock } from '../clock';
 import { EditText } from '../editText';
 import { Todo } from '../todo';
 import { InfoCategories } from '../infoCategories';
+import { Tabs, Tab } from '../tabs';
 
 export class Main extends Component {
   state = {
@@ -64,6 +62,17 @@ export class Main extends Component {
 
     return (
       <main className="main">
+        <Tabs selectedIndex={this.state.tabIndex}>
+          <Tab title="One">
+            <h2>Hey</h2>
+            <p>Lorem ipsum dolor sit amet...</p>
+          </Tab>
+
+          <Tab title="Two">
+            <h2>Yo</h2>
+            <p>Lorem ipsum dolor sit amet...</p>
+          </Tab>
+        </Tabs>
         <EditText placeholder="Click on me and edit" result={this.fn} />
         <input
           type="text"
@@ -73,7 +82,6 @@ export class Main extends Component {
         />
         <Todo list={todo.slice(0, 20).filter(this.filterTodos)} />
         <InfoCategories />
-        <Greeting name="Oleg" />
         <Form />
         <Numbers from="5" to="10" />
         <Numbers from="5" to="10" odd />
@@ -87,8 +95,6 @@ export class Main extends Component {
             </div>
           )
         }
-        <Counter />
-        <Button />
         <Info />
         <Clock />
       </main>
