@@ -3,7 +3,7 @@ import { TabNav } from './TabNav';
 export const Tab = () => null;
 
 export class Tabs extends Component {
-  state = { selectedIndex: 0 }
+  state = { selectedIndex: this.props.selectedIndex ? this.props.selectedIndex : 0 }
 
   changeTab = (selectedIndex) => {
     this.setState({ selectedIndex });

@@ -11,6 +11,7 @@ import { EditText } from '../editText';
 import { Todo } from '../todo';
 import { InfoCategories } from '../infoCategories';
 import { Tabs, Tab } from '../tabs';
+import { Gallery } from '../gallery';
 
 export class Main extends Component {
   state = {
@@ -62,15 +63,15 @@ export class Main extends Component {
 
     return (
       <main className="main">
-        <Tabs selectedIndex={this.state.tabIndex}>
+        <Tabs selectedIndex={1}>
           <Tab title="One">
-            <h2>Hey</h2>
-            <p>Lorem ipsum dolor sit amet...</p>
+            <h2>Users</h2>
+            <UsersList list={users} />
           </Tab>
 
           <Tab title="Two">
-            <h2>Yo</h2>
-            <p>Lorem ipsum dolor sit amet...</p>
+            <h2>Gallery</h2>
+            <Gallery />
           </Tab>
         </Tabs>
         <EditText placeholder="Click on me and edit" result={this.fn} />
