@@ -3,10 +3,18 @@ import { TabNav } from './TabNav';
 export const Tab = () => null;
 
 export class Tabs extends Component {
-  state = { selectedIndex: this.props.selectedIndex ? this.props.selectedIndex : 0 }
+  state = {
+    selectedIndex: this.props.selectedIndex ? this.props.selectedIndex : 0
+  }
 
   changeTab = (selectedIndex) => {
     this.setState({ selectedIndex });
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.selectedIndex !== this.props.selectedIndex) {
+      this.setState({ selectedIndex: this.props.selectedIndex });
+    }
   }
 
   render() {

@@ -12,6 +12,8 @@ import { Todo } from '../todo';
 import { InfoCategories } from '../infoCategories';
 import { Tabs, Tab } from '../tabs';
 import { Gallery } from '../gallery';
+import { TaskList } from '../taskList';
+import { AboutProduct } from '../aboutProduct';
 
 export class Main extends Component {
   state = {
@@ -42,6 +44,10 @@ export class Main extends Component {
   componentDidMount() {
     this.getUsers();
     this.todoList();
+
+    setTimeout(() => {
+      this.setState({ selectedIndex: 1 })
+    }, 3000);
   }
 
   setFilter = ({ target }) => {
@@ -63,7 +69,7 @@ export class Main extends Component {
 
     return (
       <main className="main">
-        <Tabs selectedIndex={1}>
+        <Tabs selectedIndex={this.state.selectedIndex}>
           <Tab title="One">
             <h2>Users</h2>
             <UsersList list={users} />
@@ -74,6 +80,8 @@ export class Main extends Component {
             <Gallery />
           </Tab>
         </Tabs>
+        <TaskList />
+        <AboutProduct />
         <EditText placeholder="Click on me and edit" result={this.fn} />
         <input
           type="text"

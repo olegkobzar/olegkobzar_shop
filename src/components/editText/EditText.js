@@ -12,12 +12,36 @@ export class EditText extends Component {
 
   handlerBlur = (e) => {
     this.setState({ hidden: false });
-    this.props.result(e.target.value);
+    // this.props.result(e.target.value);
   };
 
   handlerChange = ({ target }) => {
     this.setState({ text: target.value });
   };
+
+  typeEdit = () => {
+    const { textarea, placeholder } = this.props;
+    const { text } = this.state;
+
+    return (
+      textarea
+        ? <textarea
+            value={text}
+            placeholder={placeholder}
+            onChange={this.handlerChange}
+            onBlur={this.handlerBlur}
+            autoFocus
+          ></textarea>
+        : <input
+            type="text"
+            value={text}
+            placeholder={placeholder}
+            onChange={this.handlerChange}
+            onBlur={this.handlerBlur}
+            autoFocus
+          />
+    );
+  }
 
   render() {
     const { hidden, text } = this.state;
@@ -27,16 +51,7 @@ export class EditText extends Component {
       <div className="edit-text">
         {
           hidden
-            ? (
-              <input
-                type="text"
-                value={text}
-                placeholder={placeholder}
-                onChange={this.handlerChange}
-                onBlur={this.handlerBlur}
-                autoFocus
-              />
-            )
+            ? this.typeEdit()
             : <span onClick={this.handlerClick}>{text || placeholder}</span>
         }
       </div>
