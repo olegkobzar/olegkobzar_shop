@@ -43,7 +43,8 @@ module.exports = {
                 exclude: /node_modules/,
                 loader: 'eslint-loader',
                 options: { emitWarning: true }
-            },               
+            },
+
             {
                 test: /\.js$/,
                 exclude: /node_modules/,
@@ -64,8 +65,17 @@ module.exports = {
                     'css-loader',
                     'sass-loader'
                 ]
-            }
+            },
 
+            {
+                test: /\.(png|jpe?g|gif|svg)$/,
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: {},
+                    },
+                ],
+            },
         ]
     },
 
