@@ -12,7 +12,7 @@ export class EditText extends Component {
 
   handlerBlur = (e) => {
     this.setState({ hidden: false });
-    // this.props.result(e.target.value);
+    this.props.result(e.target.value);
   };
 
   handlerChange = ({ target }) => {
