@@ -1,5 +1,5 @@
 import './aboutProduct.scss';
-import { EditText } from '../editText';
+import { EditText } from '../../editText';
 
 export class AboutProduct extends Component {
   render() {

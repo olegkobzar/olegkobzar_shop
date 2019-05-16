@@ -1,26 +1,25 @@
 import { Route, Switch, Redirect } from 'react-router-dom';
 
-import { Home } from './home';
-import { Login } from './login';
+import { HomeAuth } from './homeAuth';
 import { NotFound } from './notFound';
 
-export const Pages = ({ onLogin }) => {
+export const PrivatePages = ({ onLogin }) => {
   return (
     <Switch>
       <Route
         path="/"
         exact
-        component={Home}
+        component={HomeAuth}
       />
 
-      <Route
-        path="/login"
-        render={props => <Login onLogin={onLogin} {...props} />}
+      <Redirect
+        from="/login"
+        to="/"
       />
 
       <Route
         component={NotFound}
       />
     </Switch>
-  )
+  );
 };

@@ -1,11 +1,13 @@
 import './main.scss';
 
-export const Main = ({ children }) => (
-  <main className="main">
-    <div className="container">
-      <div className="main__wrap">
-        {children}
-      </div>
+export const Main = ({ children }) => {
+  return (
+    <div className="main">
+      <main className="container">
+        <div className="main__wrap">
+          {children}
+        </div>
+      </main>
     </div>
-  </main>
-);
+  );
+}

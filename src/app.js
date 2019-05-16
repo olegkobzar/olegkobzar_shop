@@ -1,12 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 
 import './app.scss';
 
 import { Header } from './components/header';
 import { Main } from './components/main';
-import { Pages } from './pages';
+import { Pages, PrivatePages } from './pages';
 
 class App extends Component {
   state = {
@@ -28,7 +28,11 @@ class App extends Component {
       <>
         <Header user={user} onLogout={this.onLogout} />
         <Main>
-          <Pages onLogin={this.onLogin} user={user} />
+          {
+            user
+            ? <PrivatePages user={user} />
+            : <Pages onLogin={this.onLogin} user={user} />
+          }
         </Main>
       </>
     );
