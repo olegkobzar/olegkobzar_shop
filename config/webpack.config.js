@@ -9,6 +9,8 @@ const package = require('../package');
 const isProduction = process.env.NODE_ENV === 'production';
 const isStylesExternal = args.env && args.env.styles;
 
+const images = ['jpg', 'jpeg', 'png', 'gif', 'svg'];
+
 const plugins = [
     new HTMLPlugin({
         title: package.name,
@@ -23,9 +25,9 @@ const plugins = [
         Component: ['react', 'Component']
     }),
 
-    new copyPlugin([
-        { from: '*/**/*.png', to: 'images/[name].[ext]' }
-    ])
+    new copyPlugin(
+        images.map(ext => ({ from: `**/*/*.${ext}`, to: 'images/[name].[ext]' }))
+    )
 ];
 
 if (isStylesExternal) {
@@ -78,7 +80,7 @@ module.exports = {
                   {
                     loader: 'url-loader',
                     options: {
-                      limit: 8192
+                      limit: 1000000
                     }
                   }
                 ]
@@ -110,6 +112,7 @@ module.exports = {
         contentBase: path.resolve(__dirname, 'prod'),
         publicPath: '/',
         port: 9000,
-        hot: true
+        hot: true,
+        historyApiFallback: true
     }
 };

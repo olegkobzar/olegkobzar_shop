@@ -32,12 +32,3 @@ export const UsersList = ({ list, onClick }) => (
     }
   </ul>
 );
-
-UsersList.PropTypes = {
-  list: PropTypes.array.isRequired,
-  onClick: PropTypes.func
-};
-
-UsersList.defaultProps = {
-  onClick: _ => _
-};

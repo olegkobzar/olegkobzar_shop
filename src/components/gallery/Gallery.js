@@ -1,6 +1,6 @@
 import './gallery.scss';
 
-import images from './images';
+const images = ["./images/html-logo.png", "./images/css-logo.svg", "./images/js-logo.png"]
 
 export class Gallery extends Component {
   render() {

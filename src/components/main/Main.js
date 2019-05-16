@@ -9,11 +9,11 @@ import { Info } from '../info';
 import { Clock } from '../clock';
 import { EditText } from '../editText';
 import { Todo } from '../todo';
-import { InfoCategories } from '../infoCategories';
+// import { InfoCategories } from '../../pages/infoCategories';
 import { Tabs, Tab } from '../tabs';
 import { Gallery } from '../gallery';
 import { TaskList } from '../taskList';
-import { AboutProduct } from '../aboutProduct';
+// import { AboutProduct } from '../aboutProduct';
 
 export class Main extends Component {
   state = {
@@ -81,7 +81,7 @@ export class Main extends Component {
           </Tab>
         </Tabs>
         <TaskList />
-        <AboutProduct />
+        {/* <AboutProduct /> */}
         <EditText placeholder="Click on me and edit" result={this.fn} />
         <input
           type="text"
@@ -90,7 +90,7 @@ export class Main extends Component {
           onChange={this.setFilter}
         />
         <Todo list={todo.slice(0, 20).filter(this.filterTodos)} />
-        <InfoCategories />
+        {/* <InfoCategories /> */}
         <Form />
         <Numbers from="5" to="10" />
         <Numbers from="5" to="10" odd />

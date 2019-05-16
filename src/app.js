@@ -1,23 +1,30 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter } from 'react-router-dom';
 
 import './app.scss';
 
 import { Header } from './components/header';
-import { Main } from './components/main';
+import { Pages } from './pages';
 
 const App = () => (
   <div className="wrapper">
     <Header />
     <div className="container">
       <div className="wrap">
-        <Main />
+        <Pages />
       </div>
     </div>
   </div>
 );
 
-ReactDOM.render(<App />, document.getElementById('app'));
+const Root = (
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>
+);
+
+ReactDOM.render(Root, document.getElementById('app'));
 
 if (module.hot) {
   module.hot.accept();

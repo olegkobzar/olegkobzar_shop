@@ -10,7 +10,10 @@ export class Header extends Component {
           <div className="header__wrap">
             <a href="/one" className="header__logo">LOGO</a>
             <Navigation list={['Home', 'Products', 'Contacts']} />
-            <a href="tel:0663804909" className="header__phone">066-380-49-09</a>
+            <div className="header__controll">
+              <div className="header__controll-item">Sign in</div>
+              <div className="header__controll-item">Sign up</div>
+            </div>
           </div>
         </div>
       </header>

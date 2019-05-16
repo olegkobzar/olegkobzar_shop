@@ -18,12 +18,27 @@
     }
   }
 
-  &__phone {
-    font-weight: 700;
-    font-size: 24px;
+  &__controll {
+    display: flex;
+    align-items: center;
 
-    &:hover {
-      color: #fff;
+    &-item {
+      position: relative;
+      padding: 0 10px;
+
+      &:before {
+        position: absolute;
+        content: '/';
+        top: 0;
+        right: -5px;
+      }
+  
+      &:last-child {
+  
+        &:before {
+          display: none;
+        }
+      }
     }
-  }
+    }
 }
