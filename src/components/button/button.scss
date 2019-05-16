@@ -1,0 +1,25 @@
+@import "../../variables";
+
+body a.button {
+  min-width: 150px;
+  padding: 0 15px;
+  box-sizing: border-box;
+  color: #000;
+  display: inline-block;
+  text-align: center;
+  box-shadow: 1px 1px 3px rgba(0,0,0, .7);
+  text-transform: uppercase;
+
+  &:hover {
+    text-decoration: none;
+  }
+
+  &:active {
+    box-shadow: 1px 1px 3px rgba(0,0,0, .7), 0 0 1px 2px #8d9ef0;
+  }
+
+  &-disabled {
+    cursor: default;
+    pointer-events: none;
+  }
+}

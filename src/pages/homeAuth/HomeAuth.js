@@ -1,6 +1,6 @@
-import './infoCategories.scss';
+import './homeAuth.scss';
 
-export class InfoCategories extends Component {
+export class HomeAuth extends Component {
   state = {
     name: 'John',
     categories: 10,

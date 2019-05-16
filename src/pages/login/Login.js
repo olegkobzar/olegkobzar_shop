@@ -1,31 +1,39 @@
-export const Login = () => {
+import './login.scss';
+
+export const Login = ({ onLogin }) => {
   const onSubmit = (e) => {
     e.preventDefault();
-
     const data = {
       email: e.target.email.value,
       password: e.target.password.value,
     };
 
-    console.log(data);    
-  }
+    setTimeout(() => {
+      onLogin(data);
+    }, 1000);
+  };
 
   return (
-    <form action="#" onSubmit={onSubmit}>
-      <input 
-        type="text"
-        name="email"
-        placeholder="Enter email"
-      />
-      <input 
-        type="password"
-        name="password"
-        placeholder="Enter password"
-      />
-      <input 
-        type="submit"
-        value="Login"
-      />
+    <form action="#" onSubmit={onSubmit} className="login">
+      <div className="login__row">
+        <input
+          required
+          type="text"
+          name="email"
+          defaultValue="admin@a.com"
+        />
+      </div>
+      <div className="login__row">
+        <input
+          required
+          type="password"
+          name="password"
+          defaultValue="admin"
+        />
+      </div>
+      <div className="login__row">
+        <button className="btn" type="submit">Login</button>
+      </div>
     </form>
   );
-}
+};

@@ -1,20 +1,17 @@
 .header {
-  background-color: var(--purple);
+  background-color: #fff;
 
   &__wrap {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 50px;
+    height: 60px;
   }
 
   &__logo {
-    text-transform: uppercase;
-    font-weight: 700;
-    font-size: 24px;
 
-    &:hover {
-      color: #fff;
+    img {
+      width: 40px;
     }
   }
 

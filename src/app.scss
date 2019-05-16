@@ -1,5 +1,9 @@
 @import 'variables.scss';
 
+* {
+  box-sizing: border-box;
+}
+
 body {
   background-color: var(--body-bg);
   margin: 0;
@@ -31,4 +35,38 @@ a {
   max-width: var(--container-width);
   padding: 0 var(--container-padding);
   margin: 0 auto;
+}
+
+input {
+  width: 100%;
+  display: block;
+  padding: 10px;
+  font-family: 'Roboto', sans-serif;
+  outline: none;
+  border-radius: 3px;
+  border: 1px solid #000;
+
+  &:focus {
+    border-color: var(--purple);
+  }
+}
+
+.btn {
+  width: 100%;
+  display: block;
+  padding: 10px;
+  font-family: 'Roboto', sans-serif;
+  outline: none;
+  border-radius: 3px;
+  border: 1px solid #000;
+  background-color: #000;
+  color: #fff;
+  cursor: pointer;
+  font-size: 20px;
+  text-align: center;
+
+  &:hover {
+    background-color: var(--purple);
+    border-color: var(--purple);
+  }
 }

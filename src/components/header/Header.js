@@ -1,22 +1,30 @@
-import './header.scss';
-
+import { Link } from 'react-router-dom';
 import { Navigation } from '../navigation';
 
-export class Header extends Component {
-  render() {
-    return (
-      <header className="header">
-        <div className="container">
-          <div className="header__wrap">
-            <a href="/one" className="header__logo">LOGO</a>
-            <Navigation list={['Home', 'Products', 'Contacts']} />
-            <div className="header__controll">
-              <div className="header__controll-item">Sign in</div>
-              <div className="header__controll-item">Sign up</div>
-            </div>
-          </div>
-        </div>
-      </header>
-    );
-  }
-}
+import './header.scss';
+
+export const Header = ({ user, onLogout }) => (
+  <header className="header">
+    <div className="container">
+      <div className="header__wrap">
+        <Link to="/" className="header__logo">
+          <img src="/images/shop-logo.svg" alt="" />
+        </Link>
+        <Navigation />
+
+        {
+          user
+            ? (
+              <div>
+                <mark>{user.email}</mark>
+                <button type="button" onClick={onLogout}>Logout</button>
+              </div>
+            )
+            : (
+              <Link to="/login">Sign in</Link>
+            )
+        }
+      </div>
+    </div>
+  </header>
+);

@@ -1,24 +1,9 @@
 .main {
   padding: 30px 0;
-  overflow: auto;
 
-  p {
-    margin: 0 0 30px 0;
-  }
-}
-
-.posts {
-
-  li {
-    margin-bottom: 10px;
-    padding-left: 20px;
-    position: relative;
-
-    &:before {
-      position: absolute;
-      content: '-';
-      left: 0;
-      top: 0;
-    }
+  &__wrap {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
   }
 }

@@ -1,22 +1,39 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, Route } from 'react-router-dom';
 
 import './app.scss';
 
 import { Header } from './components/header';
+import { Main } from './components/main';
 import { Pages } from './pages';
 
-const App = () => (
-  <div className="wrapper">
-    <Header />
-    <div className="container">
-      <div className="wrap">
-        <Pages />
-      </div>
-    </div>
-  </div>
-);
+class App extends Component {
+  state = {
+    user: null
+  }
+
+  onLogin = (user) => {
+    this.setState({ user });
+  }
+
+  onLogout = () => {
+    this.setState({ user: null });
+  }
+
+  render() {
+    const { user } = this.state;
+
+    return (
+      <>
+        <Header user={user} onLogout={this.onLogout} />
+        <Main>
+          <Pages onLogin={this.onLogin} user={user} />
+        </Main>
+      </>
+    );
+  }
+}
 
 const Root = (
   <BrowserRouter>
