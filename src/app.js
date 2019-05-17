@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 
 import './app.scss';
 
@@ -28,7 +28,7 @@ class App extends Component {
       <>
         <Header user={user} onLogout={this.onLogout} />
         <Main>
-          <Pages onLogin={this.onLogin} user={user} />
+          <Pages user={user} onLogin={this.onLogin} />
         </Main>
       </>
     );
