@@ -4,7 +4,7 @@ import { Home } from '../home';
 import { Login } from '../login';
 import { NotFound } from '../notFound';
 
-export const Pages = ({ onLogin }) => (
+export const PublicPages = ({ onLogin }) => (
   <Switch>
     <Route
       path="/"
