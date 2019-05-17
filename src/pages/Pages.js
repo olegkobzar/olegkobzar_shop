@@ -1,26 +1,18 @@
-import { Route, Switch, Redirect } from 'react-router-dom';
+import { PrivatePages } from './privatePages';
+import { PublicPages } from './publicPages';
 
-import { Home } from './home';
-import { Login } from './login';
-import { NotFound } from './notFound';
+export class Pages extends Component {
+  render() {
+    const { user, onLogin } = this.props;
 
-export const Pages = ({ onLogin }) => {
-  return (
-    <Switch>
-      <Route
-        path="/"
-        exact
-        component={Home}
-      />
-
-      <Route
-        path="/login"
-        render={props => <Login onLogin={onLogin} {...props} />}
-      />
-
-      <Route
-        component={NotFound}
-      />
-    </Switch>
-  )
-};
+    return (
+      <>
+        {
+          user
+            ? <PrivatePages user={user} />
+            : <PublicPages onLogin={onLogin} />
+        }
+      </>
+    );
+  }
+}

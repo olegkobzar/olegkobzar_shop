@@ -6,7 +6,7 @@ import './app.scss';
 
 import { Header } from './components/header';
 import { Main } from './components/main';
-import { Pages, PrivatePages } from './pages';
+import { Pages } from './pages';
 
 class App extends Component {
   state = {
@@ -28,11 +28,7 @@ class App extends Component {
       <>
         <Header user={user} onLogout={this.onLogout} />
         <Main>
-          {
-            user
-            ? <PrivatePages user={user} />
-            : <Pages onLogin={this.onLogin} user={user} />
-          }
+          <Pages user={user} onLogin={this.onLogin} />
         </Main>
       </>
     );

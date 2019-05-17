@@ -2,6 +2,6 @@ import './loader.scss';
 
 export const Loader = ({ show }) => (
   show
-    ? <div className="loader"></div>
+    ? <div className="loader" />
     : null
 );
