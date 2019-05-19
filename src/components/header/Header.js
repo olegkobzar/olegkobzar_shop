@@ -16,7 +16,7 @@ export const Header = ({ user, onLogout }) => (
           user
             ? (
               <div>
-                <mark>{user.email}</mark>
+                <mark>{user.lastName}</mark>
                 <button type="button" onClick={onLogout}>Logout</button>
               </div>
             )
