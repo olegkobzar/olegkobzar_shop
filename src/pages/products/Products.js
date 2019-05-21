@@ -51,7 +51,10 @@ export class Products extends Component {
                         <img src="images/delete.svg" alt="delete" />
                       </a>
                     </div>
-                    <img src={product.image} alt="image" />
+                    {
+                      product.image ? <img src={product.image} alt="image" /> : <span>default image</span>
+                    }
+                    
                   </div>
                   <p className="products__name">{product.title}</p>
                 </li>
