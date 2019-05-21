@@ -17,9 +17,11 @@ export class Login extends Component {
     };
 
     server.post('public/login', data)
-      .then(user => {
-        this.props.onLogin(user);
-      })
+      .then((user) => {
+        const { onLogin } = this.props;
+
+        onLogin(user);
+      });
   };
 
   render() {

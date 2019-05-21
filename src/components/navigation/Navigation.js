@@ -11,13 +11,8 @@ const items = [
   { label: 'Contacts', id: 'contacts', icon: 'map-signs' }
 ];
 
-export const Navigation = ({ user, info }) => {
+export const Navigation = ({ user }) => {
   let filteredItems = items.filter(item => !item.auth);
-  const amount = info ? ` (${info.categories}/${info.products})` : '';
-  const logoutHandler = (e) => {
-    e.preventDefault();
-    console.log('Logout');
-  };
 
   if (user) {
     filteredItems = items.filter(item => item.auth);

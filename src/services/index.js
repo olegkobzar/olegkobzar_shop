@@ -1,7 +1,7 @@
 const BASE_URL = 'http://localhost:8086';
 
 const additioinalHeaders = {
-  headers:{
+  headers: {
     'Content-type': 'application/json; charset=utf-8'
   }
 };
