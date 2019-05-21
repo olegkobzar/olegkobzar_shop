@@ -7,17 +7,12 @@ const items = [
   { label: 'Home', id: '', icon: 'home', auth: true },
   { label: 'Shop', id: 'categories', icon: 'list-alt', auth: false },
   { label: 'Categories', id: 'categories', icon: 'list-alt', auth: true },
-  { label: 'Products', id: 'products', icon: 'shopping-bag', auth: true },
+  { label: 'Products', id: 'products', icon: 'shopping-bag' },
   { label: 'Contacts', id: 'contacts', icon: 'map-signs' }
 ];
 
-export const Navigation = ({ user, info }) => {
+export const Navigation = ({ user }) => {
   let filteredItems = items.filter(item => !item.auth);
-  const amount = info ? ` (${info.categories}/${info.products})` : '';
-  const logoutHandler = (e) => {
-    e.preventDefault();
-    console.log('Logout');
-  };
 
   if (user) {
     filteredItems = items.filter(item => item.auth);

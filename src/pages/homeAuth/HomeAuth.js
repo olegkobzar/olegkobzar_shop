@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 import './homeAuth.scss';
 
 export class HomeAuth extends Component {
@@ -22,7 +24,7 @@ export class HomeAuth extends Component {
         <span>Hello, <b>{user.firstName}</b></span>
         <p>You have <b>{info.categories}</b> categories (<b>{info.publishedCategories}</b> published)</p>
         <p>You have <b>{info.products}</b> products</p>
-        <a href="/link">Go to categories</a>
+        <Link to="categories">Go to categories</Link>
       </div>
     );
   }
