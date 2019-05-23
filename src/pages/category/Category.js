@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-import { server } from '../../services';
+import { getCategoriesService } from '../../services/categoriesService';
 
 export class Category extends Component {
   state = {
@@ -8,7 +8,7 @@ export class Category extends Component {
   }
 
   componentDidMount() {
-    server.get('public/categories')
+    getCategoriesService()
       .then(categories => this.setState({ categories }));
   }
 
