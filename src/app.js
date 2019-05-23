@@ -1,16 +1,32 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, withRouter } from 'react-router-dom';
+
+import { checkUserService } from './services/userService.js';
 
 import './app.scss';
 
 import { Header } from './components/header';
 import { Main } from './components/main';
+import { Loader } from './components/loader';
 import { Pages } from './pages';
 
 class App extends Component {
   state = {
-    user: null
+    user: null,
+    isLoading: false
+  }
+
+  componentDidMount() {
+    this.checkUser();
+  }
+
+  componentDidUpdate(prevProps, prevStates) {
+    const { user } = this.state;
+
+    if (prevStates.user && !user) {
+      this.props.history.push('/');
+    }
   }
 
   onLogin = (user) => {
@@ -21,23 +37,42 @@ class App extends Component {
     this.setState({ user: null });
   }
 
+  checkUser = () => {
+    this.setState({ isLoading: true });
+
+    checkUserService()
+      .then((user) => {
+        this.onLogin(user);
+        this.setState({ isLoading: false });
+      })
+      .catch(() => {
+        this.setState({ isLoading: false });
+      });
+  }
+
   render() {
-    const { user } = this.state;
+    const { user, isLoading } = this.state;
 
     return (
       <>
         <Header user={user} onLogout={this.onLogout} />
         <Main>
-          <Pages user={user} onLogin={this.onLogin} />
+          {
+            isLoading
+              ? <Loader show={isLoading} />
+              : <Pages user={user} onLogin={this.onLogin} />
+          }
         </Main>
       </>
     );
   }
 }
 
+const RouteApp = withRouter(App);
+
 const Root = (
   <BrowserRouter>
-    <App />
+    <RouteApp />
   </BrowserRouter>
 );
 

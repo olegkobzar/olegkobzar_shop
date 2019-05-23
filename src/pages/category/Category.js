@@ -20,13 +20,11 @@ export class Category extends Component {
         <h1>Categories</h1>
         <ul>
           {
-            categories.map((item) => {
-              return (
-                <li key={item.title}>
-                  <Link to={`categories/${item.id}`}>{item.title}</Link>
-                </li>
-              );
-            })
+            categories.map(item => (
+              <li key={item.title}>
+                <Link to={`categories/${item.id}`}>{item.title}</Link>
+              </li>
+            ))
           }
         </ul>
       </>

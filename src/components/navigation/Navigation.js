@@ -4,10 +4,10 @@ import './navigation.scss';
 
 const items = [
   { label: 'Home', id: '', icon: 'home', auth: false },
-  { label: 'Home', id: '', icon: 'home', auth: true },
+  { label: 'Home auth', id: '', icon: 'home', auth: true },
   { label: 'Shop', id: 'categories', icon: 'list-alt', auth: false },
   { label: 'Categories', id: 'categories', icon: 'list-alt', auth: true },
-  { label: 'Products', id: 'products', icon: 'shopping-bag' },
+  { label: 'Products', id: 'products', icon: 'shopping-bag', auth: true },
   { label: 'Contacts', id: 'contacts', icon: 'map-signs' }
 ];
 

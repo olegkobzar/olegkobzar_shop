@@ -17,8 +17,7 @@ export const Header = ({ user, onLogout }) => {
           <Link to="/" className="header__logo">
             <img src="/images/shop-logo.svg" alt="" />
           </Link>
-          <Navigation />
-
+          <Navigation user={user} onLogout={onLogout} />
           {
             user
               ? (

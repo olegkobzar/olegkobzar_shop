@@ -35,6 +35,7 @@ export class Products extends Component {
           onChange={this.setValue}
           value={value}
           className="products__input"
+          placeholder="Enter name product"
         />
         <ul className="products__wrap">
           {
@@ -52,9 +53,8 @@ export class Products extends Component {
                       </a>
                     </div>
                     {
-                      product.image ? <img src={product.image} alt="image" /> : <span>default image</span>
+                      product.image ? <img src={product.image} alt="product" /> : <span>default image</span>
                     }
-                    
                   </div>
                   <p className="products__name">{product.title}</p>
                 </li>
