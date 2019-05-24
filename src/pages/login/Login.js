@@ -1,5 +1,6 @@
 import { Loader } from '../../components/loader';
-import { server } from '../../services';
+
+import { loginUserService } from '../../services/userService';
 
 import './login.scss';
 
@@ -17,7 +18,7 @@ export class Login extends Component {
       password: e.target.password.value,
     };
 
-    server.post('public/login', data)
+    loginUserService(data)
       .then((user) => {
         const { onLogin } = this.props;
 

@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter, withRouter } from 'react-router-dom';
 
-import { checkUserService } from './services/userService.js';
+import { checkUserService } from './services/userService';
 
 import './app.scss';
 
