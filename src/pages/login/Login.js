@@ -1,10 +1,13 @@
+import { connect } from 'react-redux';
+
 import { Loader } from '../../components/loader';
 
 import { loginUserService } from '../../services/userService';
+import { setUser } from '../../store/user';
 
 import './login.scss';
 
-export class Login extends Component {
+export class LoginComponent extends Component {
   state = {
     show: false
   }
@@ -20,9 +23,9 @@ export class Login extends Component {
 
     loginUserService(data)
       .then((user) => {
-        const { onLogin } = this.props;
+        const { dispatch } = this.props;
 
-        onLogin(user);
+        dispatch(setUser(user));
       });
   };
 
@@ -58,3 +61,5 @@ export class Login extends Component {
     );
   }
 }
+
+export const Login = connect()(LoginComponent);
