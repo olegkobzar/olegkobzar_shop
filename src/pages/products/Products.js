@@ -1,18 +1,18 @@
 import { Link } from 'react-router-dom';
-
+import { connect } from 'react-redux';
 import { getProductsService } from '../../services/productsService';
+import { setProducts } from '../../store/products';
 
 import './products.scss';
 
-export class Products extends Component {
+export class ProductsComponent extends Component {
   state = {
-    products: [],
     value: ''
   }
 
   getProducts = () => {
     getProductsService()
-      .then(products => this.setState({ products }));
+      .then(products => this.props.dispatch(setProducts(products)));
   }
 
   componentDidMount() {
@@ -26,7 +26,8 @@ export class Products extends Component {
   filter = product => product.title.toLowerCase().includes(this.state.value.toLowerCase())
 
   render() {
-    const { products, value } = this.state;
+    const { value } = this.state;
+    const { products } = this.props;
 
     return (
       <div className="products">
@@ -67,3 +68,9 @@ export class Products extends Component {
     );
   }
 }
+
+const mapToProps = state => ({
+  products: state.products
+});
+
+export const Products = connect(mapToProps)(ProductsComponent);
