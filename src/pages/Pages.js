@@ -9,7 +9,7 @@ import { Products } from './products';
 
 export class PagesComponent extends Component {
   render() {
-    const { user, onLogin } = this.props;
+    const { user } = this.props;
 
     return (
       <Switch>
@@ -30,8 +30,8 @@ export class PagesComponent extends Component {
         />,
         {
           user
-            ? PrivatePages({ user })
-            : PublicPages({ onLogin })
+            ? PrivatePages
+            : PublicPages
         }
         <Route
           component={NotFound}

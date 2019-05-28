@@ -2,19 +2,17 @@ import { Route, Redirect } from 'react-router-dom';
 
 import { HomeAuth } from '../homeAuth';
 
-export const PrivatePages = ({ user }) => (
-  [
-    <Route
-      path="/"
-      exact
-      render={() => <HomeAuth user={user} />}
-      key="HomeAuth"
-    />,
+export const PrivatePages = [
+  <Route
+    path="/"
+    exact
+    component={HomeAuth}
+    key="HomeAuth"
+  />,
 
-    <Redirect
-      from="/login"
-      to="/"
-      key="Login"
-    />
-  ]
-);
+  <Redirect
+    from="/login"
+    to="/"
+    key="Login"
+  />
+];

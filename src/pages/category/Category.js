@@ -1,19 +1,16 @@
 import { Link } from 'react-router-dom';
-
+import { connect } from 'react-redux';
 import { getCategoriesService } from '../../services/categoriesService';
+import { setCategories } from '../../store/categories';
 
-export class Category extends Component {
-  state = {
-    categories: []
-  }
-
+export class CategoryComponent extends Component {
   componentDidMount() {
     getCategoriesService()
-      .then(categories => this.setState({ categories }));
+      .then(categories => this.props.dispatch(setCategories(categories)));
   }
 
   render() {
-    const { categories } = this.state;
+    const { categories } = this.props;
 
     return (
       <>
@@ -31,3 +28,9 @@ export class Category extends Component {
     );
   }
 }
+
+const mapToProps = state => ({
+  categories: state.categories
+});
+
+export const Category = connect(mapToProps)(CategoryComponent);
