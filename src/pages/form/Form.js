@@ -13,16 +13,13 @@ export class Form extends Component {
     [item.label]: { value: '', error: '' }
   }), {})
 
-  // state = { email: { value: '', error: '' } } }
-
-
   changeField = ({ target }) => {
     const value = target.hasOwnProperty('checked') ? target.checked : target.value;
 
     this.setState({ [target.name]: { value, error: '' } });
   }
 
-  validateField = ({ target }, index) => {
+  validateField = ({ target }, index) => { // eslint-disable-line
     const field = this.fields[index];
     const stateField = this.state[field.label];
 
@@ -43,7 +40,6 @@ export class Form extends Component {
 
   onSubmit = (event) => {
     event.preventDefault();
-    console.log(this.state);
   }
 
   getDisabledState() {
@@ -56,31 +52,31 @@ export class Form extends Component {
 
     return (
       <form className="form" onSubmit={this.onSubmit}>
+        <div className="form__caption">Sign Up</div>
+        <div className="form__wrap">
+          {
+            this.fields.map(({ label, secure }, index) => {
+              const state = this.state[label];
 
-        {
-          this.fields.map(({ label, secure }, index) => {
-            const state = this.state[label];
-
-            return (
-              <p key={label}>
-                <input
-                  type={secure ? 'password' : 'text'}
-                  name={label}
-                  placeholder={`Enter a ${label}`}
-                  value={state.value}
-                  onChange={this.changeField}
-                  onBlur={e => this.validateField(e, index)}
-                  className={state.error ? 'error' : 'correct'}
-                  disabled={disabledFields.includes(label)}
-                />
-                {state.error && <mark>{state.error}</mark>}
-              </p>
-            );
-          })
-        }
-
-        <input type="submit" value="Save" disabled={this.getDisabledState()} />
-
+              return (
+                <div className="form__row" key={label}>
+                  <input
+                    type={secure ? 'password' : 'text'}
+                    name={label}
+                    placeholder={`Enter a ${label}`}
+                    value={state.value}
+                    onChange={this.changeField}
+                    onBlur={e => this.validateField(e, index)}
+                    className={state.error ? 'error' : 'correct'}
+                    disabled={disabledFields.includes(label)}
+                  />
+                  {state.error && <mark>{state.error}</mark>}
+                </div>
+              );
+            })
+          }
+          <button className="btn" type="submit" disabled={this.getDisabledState()}>Sign Up</button>
+        </div>
       </form>
     );
   }

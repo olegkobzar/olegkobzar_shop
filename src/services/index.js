@@ -20,17 +20,18 @@ export const request = (url, method = 'get', data, settings = {}) => {
   if (data) options.body = JSON.stringify(data);
 
   const promise = fetch(`${BASE_URL}/${url}`, options)
-    .then((r) => r.json())
-    .then(data => {
+    .then(r => r.json())
+    .then((data) => {
       if (!data.error) return data;
 
       throw data.error;
     })
-    .catch(error => {
+    .catch((error) => {
       const err = String(error);
+
       if (!isCheckingUser) store.dispatch(setError(err));
       throw error;
-    })
+    });
 
   return promise;
 };

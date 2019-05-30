@@ -37,5 +37,42 @@
         }
       }
     }
+  }
+
+  &__user {
+    display: flex;
+    position: relative;
+    cursor: pointer;
+
+    &:hover {
+
+      .header__user-box {
+        display: block;
+      }
     }
+
+    &-box {
+      position: absolute;
+      right: 0;
+      top: 20px;
+      display: none;
+    }
+
+    &-inner {
+      background-color: #fff;
+      border-radius: 5px;
+      padding: 10px 20px;
+      box-shadow: 0 2px 37px 0 rgba(0, 35, 117, 0.14);
+      cursor: default;
+
+      a {
+        display: block;
+        padding: 3px 0;
+
+        &:hover {
+          color: var(--purple);
+        }
+      }
+    }
+  }
 }

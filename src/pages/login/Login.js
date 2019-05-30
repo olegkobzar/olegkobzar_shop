@@ -15,7 +15,7 @@ export class LoginComponent extends Component {
 
   onSubmit = (e) => {
     e.preventDefault();
-    this.setState({ show: true });
+    this.setState({ show: false });
 
     const data = {
       email: e.target.email.value,
@@ -28,9 +28,7 @@ export class LoginComponent extends Component {
 
         dispatch(setUser(user));
       })
-      .catch(error => {
-        this.setState({ error });
-      })
+      .catch(error => this.setState({ error }));
   };
 
   render() {
@@ -57,7 +55,9 @@ export class LoginComponent extends Component {
                 defaultValue="admin"
               />
             </div>
-            <p>{error}</p>
+            {
+              error && <p>{error}</p>
+            }
             <div className="login__row">
               <button className="btn" type="submit">Login</button>
             </div>

@@ -25,16 +25,28 @@ export const HeaderComponent = ({ user, dispatch, info }) => {
           {
             user
               ? (
-                <div>
-                  <mark>{user.firstName}</mark>
+                <div className="header__user">
+                  <div className="header__user-name">{user.firstName}</div>
                   {
                     info && <span>({info.categories}/{info.products})</span>
                   }
-                  <button type="button" onClick={logoutHandler}>Logout</button>
+                  <div className="header__user-box">
+                    <div className="header__user-inner">
+                      <a href="#" onClick={logoutHandler}>Logout</a>
+                      <Link to="/profile">Profile</Link>
+                    </div>
+                  </div>
                 </div>
               )
               : (
-                <Link to="/login">Sign in</Link>
+                <div className="header__controll">
+                  <div className="header__controll-item">
+                    <Link to="/login">Sign in</Link>
+                  </div>
+                  <div className="header__controll-item">
+                    <Link to="/registration">Sign up</Link>
+                  </div>
+                </div>
               )
           }
         </div>

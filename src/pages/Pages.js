@@ -4,6 +4,7 @@ import { PublicPages } from './publicPages';
 import { NotFound } from './notFound';
 import { Category } from './category';
 import { Products } from './products';
+import { Form } from './form';
 
 export class Pages extends Component {
   render() {
@@ -11,6 +12,11 @@ export class Pages extends Component {
 
     return (
       <Switch>
+        <Route
+          path="/registration"
+          component={Form}
+          exact
+        />
         <Route
           path="/categories"
           component={Category}

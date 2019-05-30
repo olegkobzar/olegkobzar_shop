@@ -49,6 +49,14 @@ input {
   &:focus {
     border-color: var(--purple);
   }
+
+  &.error {
+    border-color: red;
+  }
+
+  &.correct {
+    border-color: green;
+  }
 }
 
 .btn {

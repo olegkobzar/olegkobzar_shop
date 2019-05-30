@@ -35,7 +35,7 @@ export class AppComponent extends Component {
       this.getInfo();
     }
 
-    if (prevProps.status && status) {
+    if (!prevProps.status && status) {
       this.container.error(
         <strong>{status}</strong>,
         <em>Error!</em>
@@ -76,12 +76,10 @@ export class AppComponent extends Component {
               : <Pages user={user} />
           }
         </Main>
-
         <ToastContainer
           ref={ref => this.container = ref}
           className="toast-top-right"
         />
-
       </>
     );
   }
