@@ -9,7 +9,8 @@ import './login.scss';
 
 export class LoginComponent extends Component {
   state = {
-    show: false
+    show: false,
+    error: ''
   }
 
   onSubmit = (e) => {
@@ -26,11 +27,14 @@ export class LoginComponent extends Component {
         const { dispatch } = this.props;
 
         dispatch(setUser(user));
-      });
+      })
+      .catch(error => {
+        this.setState({ error });
+      })
   };
 
   render() {
-    const { show } = this.state;
+    const { show, error } = this.state;
 
     return (
       show
@@ -53,6 +57,7 @@ export class LoginComponent extends Component {
                 defaultValue="admin"
               />
             </div>
+            <p>{error}</p>
             <div className="login__row">
               <button className="btn" type="submit">Login</button>
             </div>

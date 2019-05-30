@@ -6,7 +6,7 @@ import { removeUser } from '../../store/user';
 
 import './header.scss';
 
-export const HeaderComponent = ({ user, dispatch }) => {
+export const HeaderComponent = ({ user, dispatch, info }) => {
   const onLogout = () => dispatch(removeUser());
   const logoutHandler = (e) => {
     e.preventDefault();
@@ -26,7 +26,10 @@ export const HeaderComponent = ({ user, dispatch }) => {
             user
               ? (
                 <div>
-                  <mark>{user.lastName}</mark>
+                  <mark>{user.firstName}</mark>
+                  {
+                    info && <span>({info.categories}/{info.products})</span>
+                  }
                   <button type="button" onClick={logoutHandler}>Logout</button>
                 </div>
               )
@@ -41,7 +44,8 @@ export const HeaderComponent = ({ user, dispatch }) => {
 };
 
 const mapToProps = state => ({
-  user: state.user
+  user: state.user,
+  info: state.info
 });
 
 export const Header = connect(mapToProps)(HeaderComponent);

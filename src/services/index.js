@@ -1,3 +1,6 @@
+import { store } from '../store';
+import { setError } from '../store/status';
+
 const BASE_URL = 'http://localhost:8086';
 
 const additioinalHeaders = {
@@ -12,17 +15,22 @@ export const request = (url, method = 'get', data, settings = {}) => {
     credentials: 'include',
     ...settings
   };
+  const isCheckingUser = url.includes('checkUser');
 
   if (data) options.body = JSON.stringify(data);
 
   const promise = fetch(`${BASE_URL}/${url}`, options)
-    .then((r) => {
-      if (r.status < 200 || r.status > 299) {
-        throw new Error(r.statusText);
-      }
+    .then((r) => r.json())
+    .then(data => {
+      if (!data.error) return data;
 
-      return r.json();
-    });
+      throw data.error;
+    })
+    .catch(error => {
+      const err = String(error);
+      if (!isCheckingUser) store.dispatch(setError(err));
+      throw error;
+    })
 
   return promise;
 };
