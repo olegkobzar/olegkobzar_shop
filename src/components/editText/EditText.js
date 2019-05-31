@@ -3,7 +3,7 @@ import './editText.scss';
 export class EditText extends Component {
   state = {
     hidden: false,
-    text: ''
+    text: this.props.value
   };
 
   handlerClick = () => {
@@ -22,37 +22,31 @@ export class EditText extends Component {
   typeEdit = () => {
     const { textarea, placeholder } = this.props;
     const { text } = this.state;
+    const sett = {
+      value: text,
+      placeholder,
+      onChange: this.handlerChange,
+      onBlur: this.handlerBlur,
+      autoFocus: true
+    };
 
     return (
       textarea
-        ? <textarea
-            value={text}
-            placeholder={placeholder}
-            onChange={this.handlerChange}
-            onBlur={this.handlerBlur}
-            autoFocus
-          ></textarea>
-        : <input
-            type="text"
-            value={text}
-            placeholder={placeholder}
-            onChange={this.handlerChange}
-            onBlur={this.handlerBlur}
-            autoFocus
-          />
+        ? <textarea {...sett} />
+        : <input type="text" {...sett} />
     );
   }
 
   render() {
-    const { hidden, text } = this.state;
-    const { placeholder } = this.props;
+    const { hidden } = this.state;
+    const { placeholder, value } = this.props;
 
     return (
       <div className="edit-text">
         {
           hidden
             ? this.typeEdit()
-            : <span onClick={this.handlerClick}>{text || placeholder}</span>
+            : <span onClick={this.handlerClick}>{value || placeholder}</span> // eslint-disable-line
         }
       </div>
     );

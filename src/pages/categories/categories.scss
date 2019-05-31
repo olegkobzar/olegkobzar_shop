@@ -1,1 +1,14 @@
+.categories {
 
+  &__wrap {
+    display: flex;
+  }
+
+  &__col {
+    width: 50%;
+
+    h4 {
+      margin: 0 0 10px;
+    }
+  }
+}

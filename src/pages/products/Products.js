@@ -58,7 +58,9 @@ export class ProductsComponent extends Component {
                       product.image ? <img src={product.image} alt="product" /> : <span>default image</span>
                     }
                   </div>
-                  <p className="products__name">{product.title}</p>
+                  <p className="products__name">
+                    <Link to={`products/${product.id}`}>{product.title}</Link>
+                  </p>
                 </li>
               ))
           }

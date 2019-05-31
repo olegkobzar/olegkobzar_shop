@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import { getCategoriesService } from '../../services/categoriesService';
 import { setCategories } from '../../store/categories';
 
+import './categories.scss';
+
 export class CategoriesComponent extends Component {
   componentDidMount() {
     getCategoriesService()
@@ -10,27 +12,53 @@ export class CategoriesComponent extends Component {
   }
 
   render() {
-    const { categories } = this.props;
+    const { categories, user } = this.props;
 
     return (
-      <>
+      <div className="categories">
         <h1>Categories</h1>
-        <ul>
+        <div className="categories__wrap">
+          <div className="categories__col">
+            <h4>Published categories</h4>
+            <ul>
+              {
+                categories.map(item => (
+                  item.published && (
+                    <li key={item.title}>
+                      <Link to={`categories/${item.id}`}>{item.title}</Link>
+                    </li>
+                  )
+                ))
+              }
+            </ul>
+          </div>
           {
-            categories.map(item => (
-              <li key={item.title}>
-                <Link to={`categories/${item.id}`}>{item.title}</Link>
-              </li>
-            ))
+            user && (
+              <div className="categories__col">
+                <h4>Categories</h4>
+                <ul>
+                  {
+                    categories.map(item => (
+                      !item.published && (
+                        <li key={item.title}>
+                          <Link to={`categories/${item.id}`}>{item.title}</Link>
+                        </li>
+                      )
+                    ))
+                  }
+                </ul>
+              </div>
+            )
           }
-        </ul>
-      </>
+        </div>
+      </div>
     );
   }
 }
 
 const mapToProps = state => ({
-  categories: state.categories
+  categories: state.categories,
+  user: state.user
 });
 
 export const Categories = connect(mapToProps)(CategoriesComponent);
