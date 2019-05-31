@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { getCategoriesService } from '../../services/categoriesService';
 import { setCategories } from '../../store/categories';
 
-export class CategoryComponent extends Component {
+export class CategoriesComponent extends Component {
   componentDidMount() {
     getCategoriesService()
       .then(categories => this.props.dispatch(setCategories(categories)));
@@ -33,4 +33,4 @@ const mapToProps = state => ({
   categories: state.categories
 });
 
-export const Category = connect(mapToProps)(CategoryComponent);
+export const Categories = connect(mapToProps)(CategoriesComponent);
