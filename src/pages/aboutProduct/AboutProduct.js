@@ -1,5 +1,5 @@
 import './aboutProduct.scss';
-import { EditText } from '../../editText';
+import { EditText } from '../../components/editText';
 
 export class AboutProduct extends Component {
   render() {
@@ -16,8 +16,8 @@ export class AboutProduct extends Component {
         <div className="about-product__info">
           <EditText textarea placeholder="Product info" />
         </div>
-        <button className="btn">Save</button>
+        <button className="btn" type="button">Save</button>
       </div>
-    )
+    );
   }
 }

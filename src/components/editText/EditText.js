@@ -25,21 +25,25 @@ export class EditText extends Component {
 
     return (
       textarea
-        ? <textarea
+        ? (
+          <textarea
             value={text}
             placeholder={placeholder}
             onChange={this.handlerChange}
             onBlur={this.handlerBlur}
-            autoFocus
-          ></textarea>
-        : <input
+            autoFocus // eslint-disable-line
+          />
+        )
+        : (
+          <input
             type="text"
             value={text}
             placeholder={placeholder}
             onChange={this.handlerChange}
             onBlur={this.handlerBlur}
-            autoFocus
+            autoFocus // eslint-disable-line
           />
+        )
     );
   }
 
@@ -52,7 +56,7 @@ export class EditText extends Component {
         {
           hidden
             ? this.typeEdit()
-            : <span onClick={this.handlerClick}>{text || placeholder}</span>
+            : <span onClick={this.handlerClick}>{text || placeholder}</span> // eslint-disable-line
         }
       </div>
     );
