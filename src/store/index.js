@@ -1,13 +1,15 @@
 import { createStore, combineReducers } from 'redux';
 import { user } from './user';
-import { products } from './products';
-import { categories, info } from './categories';
+import { products, product } from './products';
+import { categories, category, info } from './categories';
 import { status } from './status';
 
 const rootReducers = combineReducers({
   user,
   products,
+  product,
   categories,
+  category,
   info,
   status
 });
