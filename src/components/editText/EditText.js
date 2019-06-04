@@ -6,7 +6,7 @@ export class EditText extends Component {
     text: this.props.value
   };
 
-  handlerClick = () => {
+  handlerClick = (e) => {
     this.setState({ hidden: true });
   };
 
