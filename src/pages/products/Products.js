@@ -95,6 +95,7 @@ export class ProductsComponent extends Component {
                       <button
                         type="button"
                         className="products__controll-item"
+                        onClick={() => this.onClickDelete()}
                       >
                         <img src="images/delete.svg" alt="delete" />
                       </button>
