@@ -2,7 +2,7 @@ export default {
   user: null,
   info: null,
   categories: [],
-  category: [],
+  category: null,
   products: [],
   product: {},
   status: ''

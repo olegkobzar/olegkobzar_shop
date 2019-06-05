@@ -1,18 +1,24 @@
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { getProductsService } from '../../services/productsService';
-import { setProducts } from '../../store/products';
+import { getProductsService, deleteProductService, updateProductService } from '../../services/productsService';
+import { setProducts, deleteProduct } from '../../store/products';
+import { EditText } from '../../components/editText';
 
 import './products.scss';
 
 export class ProductsComponent extends Component {
   state = {
-    value: ''
+    value: '',
+    currentItemEdit: null,
+    deleteItem: ''
   }
 
   getProducts = () => {
     getProductsService()
-      .then(products => this.props.dispatch(setProducts(products)));
+      .then((data) => {
+        this.products = data;
+        this.props.dispatch(setProducts(data));
+      });
   }
 
   componentDidMount() {
@@ -23,7 +29,39 @@ export class ProductsComponent extends Component {
     this.setState({ value: target.value });
   }
 
-  filter = product => product.title.toLowerCase().includes(this.state.value.toLowerCase())
+  filter = product => product.title.toLowerCase().includes(this.state.value.toLowerCase());
+
+  resultText = text => console.log(text); // eslint-disable-line
+
+  onClickEdit = (id) => {
+    this.setState({ currentItemEdit: id });
+  }
+
+  onTitleChange = (id, title) => {
+    const product = this.products.find(item => item.id === id);
+    product.title = title;
+
+    updateProductService(id, product)
+      .then(() => {
+        this.setState({ currentItemEdit: null });
+        this.getProducts();
+      });
+  }
+
+  onTitleClick = (id) => {
+    const { history } = this.props;
+
+    history.push(`/products/${id}`);
+  }
+
+  onClickDelete = () => {
+    const { deleteItem } = this.state;
+
+    deleteProductService(deleteItem)
+      .then(() => {
+        this.props.dispatch(deleteProduct(deleteItem));
+      });
+  }
 
   render() {
     const { value } = this.state;
@@ -47,20 +85,35 @@ export class ProductsComponent extends Component {
                 <li key={product.title} className="products__item">
                   <div className="products__inner">
                     <div className="products__controll">
-                      <a href="/edit" className="products__controll-item">
+                      <button
+                        type="button"
+                        className="products__controll-item"
+                        onClick={() => this.onClickEdit(product.id)}
+                      >
                         <img src="images/edit.svg" alt="edit" />
-                      </a>
-                      <a href="/delete" className="products__controll-item">
+                      </button>
+                      <button
+                        type="button"
+                        className="products__controll-item"
+                      >
                         <img src="images/delete.svg" alt="delete" />
-                      </a>
+                      </button>
                     </div>
                     {
                       product.image ? <img src={product.image} alt="product" /> : <span>default image</span>
                     }
                   </div>
-                  <p className="products__name">
-                    <Link to={`products/${product.id}`}>{product.title}</Link>
-                  </p>
+                  <div className="products__name">
+                    <EditText
+                      placeholder="Product name"
+                      value={product.title}
+                      edit={this.state.currentItemEdit === product.id}
+                      onTextEdit={text => this.onTitleChange(product.id, text)}
+                      result={this.resultText}
+                      onClick={() => this.onTitleClick(product.id)}
+                      className="products__name"
+                    />
+                  </div>
                 </li>
               ))
           }

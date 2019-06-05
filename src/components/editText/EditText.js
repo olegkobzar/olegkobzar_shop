@@ -2,20 +2,39 @@ import './editText.scss';
 
 export class EditText extends Component {
   state = {
-    hidden: false,
-    text: this.props.value
+    text: this.props.value,
+    isEdit: this.props.edit || false
   };
 
-  handlerClick = () => {
-    this.setState({ hidden: true });
+  componentDidUpdate(prevProp) {
+    const { value, edit } = this.props;
+
+    if (prevProp.value !== value) {
+      this.setState({ text: value }); // eslint-disable-line
+    }
+    if (prevProp.edit !== edit) {
+      this.setState({ isEdit: edit }); // eslint-disable-line
+    }
+  }
+
+  onClick = () => {
+    const { onClick } = this.props;
+
+    if (!this.state.isEdit && onClick) {
+      onClick();
+    }
+    this.setState({ isEdit: true });
   };
 
-  handlerBlur = (e) => {
-    this.setState({ hidden: false });
+  onBlur = (e) => {
+    this.setState({ isEdit: false });
+    if (this.props.onTextEdit) {
+      this.props.onTextEdit(this.state.text);
+    }
     this.props.result(e.target.value);
   };
 
-  handlerChange = ({ target }) => {
+  onChange = ({ target }) => {
     this.setState({ text: target.value });
   };
 
@@ -25,8 +44,8 @@ export class EditText extends Component {
     const sett = {
       value: text,
       placeholder,
-      onChange: this.handlerChange,
-      onBlur: this.handlerBlur,
+      onChange: this.onChange,
+      onBlur: this.onBlur,
       autoFocus: true
     };
 
@@ -38,15 +57,15 @@ export class EditText extends Component {
   }
 
   render() {
-    const { hidden } = this.state;
+    const { isEdit } = this.state;
     const { placeholder, value } = this.props;
 
     return (
       <div className="edit-text">
         {
-          hidden
+          isEdit
             ? this.typeEdit()
-            : <span onClick={this.handlerClick}>{value || placeholder}</span> // eslint-disable-line
+            : <span onClick={this.onClick}>{value || placeholder}</span> // eslint-disable-line
         }
       </div>
     );

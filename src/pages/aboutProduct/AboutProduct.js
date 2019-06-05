@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { EditText } from '../../components/editText';
 import { getProductsIdService } from '../../services/productsService';
-import { setProduct } from '../../store/products';
+import { setProduct, cleanProduct } from '../../store/products';
 
 import './aboutProduct.scss';
 
@@ -15,6 +15,12 @@ export class AboutProductComponent extends Component {
 
   componentDidMount() {
     this.getProductInfo();
+  }
+
+  componentWillUnmount() {
+    const { dispatch } = this.props;
+
+    return dispatch(cleanProduct());
   }
 
   resultText = text => console.log(text); // eslint-disable-line
