@@ -30,9 +30,7 @@ export class AboutProductComponent extends Component {
     updateProductService(id, product)
       .then(() => {
         getProductsIdService(match.params.id)
-          .then((data) => {
-            dispatch(setProduct(data));
-          });
+          .then(data => dispatch(setProduct(data)));
       });
   }
 

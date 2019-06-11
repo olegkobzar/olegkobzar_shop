@@ -25,7 +25,7 @@ export class CategoriesComponent extends Component {
 
     category.title = title;
     updateCategoryService(id, category)
-      .then(() => this.getCategories());
+      .then(this.getCategories);
   }
 
   onDelete = (id) => {
@@ -45,7 +45,7 @@ export class CategoriesComponent extends Component {
 
     category.published = published;
     updateCategoryService(id, category)
-      .then(() => this.getCategories());
+      .then(this.getCategories);
   }
 
   published = () => {
