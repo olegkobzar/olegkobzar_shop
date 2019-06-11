@@ -1,0 +1,52 @@
+.published {
+
+  &__item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+  &__controll {
+    display: flex;
+    align-items: center;
+
+    &-item {
+      padding: 3px;
+      line-height: 0;
+      background-color: transparent;
+      border: none;
+      margin-right: 10px;
+      outline: none;
+      cursor: pointer;
+
+      &:last-child {
+        margin-right: 0;
+      }
+
+      &:hover {
+
+        svg {
+          fill: #000;
+        }
+      }
+
+      svg {
+        fill: var(--purple);
+        transition: all .3s;
+      }
+    }
+  }
+
+  .edit-text {
+    width: 250px;
+    padding-right: 30px;
+
+    span {
+      transition: all .3s;
+
+      &:hover {
+        color: var(--purple);
+      }
+    }
+  }
+}

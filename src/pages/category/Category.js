@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { getCategoriesIdService } from '../../services/categoriesService';
 import { setCategory } from '../../store/categories';
 
+import './category.scss';
+
 export class CategoryComponent extends Component {
   getCategoryProducts = () => {
     const { match, dispatch } = this.props;
@@ -21,16 +23,23 @@ export class CategoryComponent extends Component {
 
     return (
       <div className="category">
+        <Link to="/categories" className="category__back">Back to categories</Link>
         <h1>Category <span>{title}</span></h1>
-        <ul className="category_products">
-          {
-            products && products.map(item => (
-              <li key={item.id}>
-                <Link to={`/products/${item.id}`}>{item.title}</Link>
-              </li>
-            ))
-          }
-        </ul>
+        {
+          products
+            ? (
+              <ul className="category__products">
+                {
+                  products.map(item => (
+                    <li key={item.id} className="category__products-item">
+                      <Link to={`/products/${item.id}`}>{item.title}</Link>
+                    </li>
+                  ))
+                }
+              </ul>
+            )
+            : <span className="category__nothing">There are no products in this category.</span>
+        }
       </div>
     );
   }

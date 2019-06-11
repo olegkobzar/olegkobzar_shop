@@ -1,0 +1,19 @@
+.unpublished {
+
+  input {
+    margin-bottom: 10px;
+  }
+
+  &__list {
+
+    &-item {
+      margin-bottom: 10px;
+      cursor: pointer;
+      transition: all .3s;
+
+      &:hover {
+        color: var(--purple);
+      }
+    }
+  }
+}
